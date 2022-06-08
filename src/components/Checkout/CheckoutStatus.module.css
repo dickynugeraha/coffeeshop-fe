@@ -1,0 +1,52 @@
+.progress {
+  margin-bottom: 40px;
+}
+.progress-item > li {
+  display: inline-block;
+  width: 180px;
+}
+.icon {
+  font-size: 2.5rem;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+.sub-icon {
+  background: #ccc;
+  color: #fff;
+  padding: 5px;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+.progress-item li > div:nth-of-type(2)::after {
+  content: "";
+  background: #ccc;
+  height: 3px;
+  width: 190px;
+  margin-top: -26px;
+  display: block;
+  z-index: -1;
+}
+.progress-item p {
+  margin-top: 25px;
+}
+.progress-item div:nth-of-type(2).active::after,
+.sub-icon.active {
+  background-color: #148e14;
+}
+.icon.active {
+  color: #148e14;
+}
+
+@media screen and (max-width: 712px) {
+  .progress-item > li,
+  .progress-item li > div:nth-of-type(2)::after {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .progress-item > li,
+  .progress-item li > div:nth-of-type(2)::after {
+    width: 125px;
+  }
+}

@@ -1,0 +1,99 @@
+.cart {
+  margin-top: 8rem;
+  padding: 0 20%;
+  color: inherit;
+}
+
+.cart > h1 {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  font-weight: 400;
+}
+
+.cart > ul {
+  list-style: none;
+}
+.cart > h3 {
+  font-style: italic;
+  color: #acacac;
+  font-weight: 300;
+}
+.total {
+  margin: 3rem 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+}
+
+.total h2:last-of-type {
+  color: #4e9f3d;
+}
+
+.section_eat {
+  display: flex;
+}
+.eat_by {
+  width: 8rem;
+}
+
+/* .section_table {
+  display: flex;
+} */
+
+.payment,
+.table_number {
+  display: flex;
+  align-items: center;
+}
+.payment > div,
+.table_number > div {
+  width: 9rem;
+  margin-bottom: 0.3rem;
+}
+
+div.inputed {
+  width: 5rem;
+}
+
+.inputed input,
+.inputed select {
+  width: 100%;
+  padding: 0.2rem;
+}
+
+.inputed select:focus {
+  outline: none;
+}
+
+.eat_by .inputed > select {
+  border: none;
+  padding-left: 0;
+  width: 7rem;
+}
+
+.action button {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  padding: 1rem 0;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border: 1px solid #4e9f3d;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #4e9f3d;
+  transition: background 0.2s ease-out;
+  cursor: pointer;
+}
+.action button:hover {
+  background-color: #4e9f3d;
+  color: #f1f1f1;
+}
+
+@media screen and (max-width: 800px) {
+  .cart {
+    padding: 0 10%;
+  }
+}

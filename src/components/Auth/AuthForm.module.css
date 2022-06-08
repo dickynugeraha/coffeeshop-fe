@@ -1,0 +1,79 @@
+.auth {
+  margin: 10rem auto;
+  width: 80%;
+  max-width: 38rem;
+  border-radius: 2px;
+  background-color: transparent;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 2rem;
+  border: 2px solid #bb8760;
+}
+
+.auth h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.control {
+  margin-bottom: 0.5rem;
+}
+
+.control label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.control input {
+  font: inherit;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.control input:focus {
+  outline: none;
+  background-color: #fff4ee;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions button {
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  background-color: #bb8760;
+  border: 1px solid #bb8760;
+  border-radius: 4px;
+  padding: 0.5rem 2.5rem;
+  min-width: 13rem;
+  transition: all 0.2s ease-out;
+}
+
+.actions button:hover {
+  background-color: #793e18;
+  border-color: #793e18;
+}
+
+p.toggle {
+  cursor: pointer;
+  margin-top: 1rem;
+  background-color: transparent;
+  color: #bb8760;
+  border-bottom: 1px solid transparent;
+  text-align: left;
+  width: 100%;
+}
+
+p.toggle:hover {
+  background-color: transparent;
+  color: #dda57a;
+}

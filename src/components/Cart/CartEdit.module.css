@@ -1,0 +1,36 @@
+.form_edit {
+  padding: 2rem;
+}
+.form_edit h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.quantity span {
+  display: inline-block;
+  text-align: center;
+  height: 1.5rem;
+  width: 2rem;
+  border: 1px solid #b6b6b6;
+  border-radius: 2px;
+  color: #b6b6b6;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
+}
+
+.quantity span:first-of-type {
+  margin-right: 10px;
+}
+
+.quantity span:first-of-type:hover {
+  border-color: #83bd75;
+  color: white;
+  background-color: #83bd75;
+}
+
+.quantity span:last-of-type:hover {
+  border-color: #fd5d5d;
+  color: white;
+  background-color: #fd5d5d;
+}

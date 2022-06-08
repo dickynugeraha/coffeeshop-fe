@@ -1,0 +1,67 @@
+.container {
+  max-width: 62rem;
+  width: 90%;
+  margin: 15vh auto 3rem;
+  border-radius: 2px;
+  color: #414141;
+}
+.container .forName {
+  margin: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #414141;
+  font-size: 2rem;
+}
+.container h1 {
+  font-weight: 400;
+}
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  text-align: center;
+  min-height: 20rem;
+}
+.wrap > div {
+  padding: 1.5rem;
+}
+.wrap h1 {
+  margin-bottom: 30px;
+}
+.wrap > div:first-of-type {
+  width: 23rem;
+  border: none;
+  height: 100%;
+}
+.wrap > div:last-of-type {
+  width: 37rem;
+}
+.wrap > div:last-of-type h2 {
+  color: rgb(209, 49, 49);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.itemOrder {
+  list-style: none;
+  outline: none;
+}
+.totalAmount {
+  margin-top: 0.8rem;
+  border-top: 1px solid #5e5e5e;
+  padding-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1150px) {
+  .wrap {
+    justify-content: center;
+  }
+  .wrap > div:first-of-type {
+    width: 100%;
+  }
+  .wrap > div:last-of-type {
+    width: 100%;
+  }
+}

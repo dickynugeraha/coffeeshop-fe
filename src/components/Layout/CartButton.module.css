@@ -1,0 +1,57 @@
+.btn_cart {
+  color: #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.2rem;
+  height: 2.5rem;
+  border-radius: 20px;
+  background-color: #793e18;
+  transition: transform 200ms ease-in;
+}
+
+.btn_cart:hover {
+  transform: scale(1.1);
+  background-color: #643210;
+}
+
+.btn_cart span {
+  background-color: #bb8760;
+  padding: 0.2rem 0.8rem;
+  border-radius: 30px;
+  margin-left: 1rem;
+  color: white;
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@media screen and (max-width: 650px) {
+  .btn_cart {
+    padding: 0.4rem 1.8rem;
+  }
+}
+@media screen and (max-width: 420px) {
+  .btn_cart {
+    padding: 0.1rem 0.8rem;
+  }
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

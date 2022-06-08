@@ -1,0 +1,14 @@
+.checkoutDesc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 2px;
+  text-align: justify;
+}
+.checkoutDesc > p {
+  margin-top: 5px;
+}

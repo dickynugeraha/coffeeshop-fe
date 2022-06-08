@@ -1,0 +1,15 @@
+.filter {
+  max-width: 50rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+}
+.filter label {
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3f3f3f;
+}

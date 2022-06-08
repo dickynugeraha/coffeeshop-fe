@@ -1,0 +1,28 @@
+.products {
+  max-width: 70rem;
+  width: 90%;
+  margin: 1.5rem auto 3rem;
+  animation: product-upper 1s ease-out forwards;
+  /* background-color: #f8f8f8; */
+  border-radius: 2px;
+}
+.products ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@keyframes product-upper {
+  from {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
