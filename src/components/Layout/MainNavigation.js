@@ -7,7 +7,7 @@ import AuthContext from "../../store/auth-context";
 
 const MainNavigation = () => {
   const authContext = useContext(AuthContext);
-  const { name, isLoggedIn, isAdmin, logout } = authContext;
+  const { isLoggedIn, isAdmin, logout } = authContext;
 
   const history = useHistory();
 
@@ -32,19 +32,27 @@ const MainNavigation = () => {
             {isAdmin && (
               <Fragment>
                 <li>
+                  <Link to="/users">
+                    <p>Users</p>
+                  </Link>
+                </li>
+                <li>
                   <Link to="/menu">
                     <p>Products</p>
                   </Link>
                 </li>
-                <li>
-                  <Link to="/orders">
-                    <p>Orders</p>
-                  </Link>
+                <li className={classes.order}>
+                  <p>Orders</p>
+                  <div className={classes["dropdown-content"]}>
+                    <Link to="/orders/antrean">Antrean</Link>
+                    <Link to="/orders/success">Success</Link>
+                    <Link to="/orders/cancel">Cancel</Link>
+                  </div>
                 </li>
               </Fragment>
             )}
             {!isAdmin && (
-              <li>
+              <li style={{ height: "40px" }}>
                 <Link to="/cart">
                   <div className={classes["btn_cart"]}>Cart</div>
                 </Link>

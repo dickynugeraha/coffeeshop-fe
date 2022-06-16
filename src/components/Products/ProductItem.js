@@ -33,10 +33,10 @@ const ProductItem = (props) => {
         onMouseLeave={mouseOutHandler}
       >
         <div>
-          <div className={classes.productImg}>
-            <img src={props.imageUrl} alt="product-coffee" />
-          </div>
-          <div>
+          <div className={classes.productHeader}>
+            <div className={classes.img}>
+              <img src={props.imageUrl} alt="product-coffee" />
+            </div>
             <h3 className="title" style={{ margin: "0 10px" }}>
               {props.title}
             </h3>

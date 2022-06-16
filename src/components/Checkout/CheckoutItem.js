@@ -5,7 +5,7 @@ const CheckoutItem = (props) => {
   return (
     <div className={classes.checkoutDesc}>
       <div>
-        <p>{props.title}</p>
+        <p className={classes.title}>{props.title}</p>
         <p className={classes.price}>
           (Rp. {props.price} x {props.quantity} pcs)
         </p>

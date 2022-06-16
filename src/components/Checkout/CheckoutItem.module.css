@@ -3,6 +3,12 @@
   justify-content: space-between;
   align-items: center;
 }
+.checkoutDesc > div:first-of-type {
+  margin-bottom: 10px;
+}
+.title {
+  text-align: left;
+}
 .price {
   font-style: italic;
   font-size: 0.9rem;
@@ -10,5 +16,5 @@
   text-align: justify;
 }
 .checkoutDesc > p {
-  margin-top: 5px;
+  margin-top: 10px;
 }

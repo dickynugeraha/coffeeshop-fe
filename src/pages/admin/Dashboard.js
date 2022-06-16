@@ -8,7 +8,7 @@ const Dashboard = () => {
     <WrapContent>
       <h1
         style={{
-          fontSize: "4rem",
+          fontSize: "3.4rem",
           paddingTop: "11rem",
           textAlign: "center",
           textTransform: "uppercase",

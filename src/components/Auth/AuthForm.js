@@ -127,7 +127,7 @@ const AuthForm = () => {
           {!isLoading && (
             <button>{isLogin ? "Login" : "Create Account"}</button>
           )}
-          {isLoading && <p>Sending request...</p>}
+          {isLoading && <p>Loading...</p>}
         </div>
       </form>
     </section>

@@ -142,9 +142,7 @@ const FormEdit = (props) => {
           </div>
           <div className="form-control">
             <div className={`action`} style={{ marginTop: "1.2rem" }}>
-              <button style={{ backgroundColor: "#36304a" }}>
-                {singleProd ? "Edit" : "Add"}
-              </button>
+              <button type="sumbit">Edit</button>
             </div>
           </div>
         </form>

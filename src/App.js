@@ -12,6 +12,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import Menu from "./pages/admin/Menu";
 import Order from "./pages/admin/Order";
 import NoMatch from "./components/UI/NoMatch";
+import Users from "./pages/admin/Users";
 
 import AuthContext from "./store/auth-context";
 
@@ -62,6 +63,10 @@ const App = () => {
         {isAdmin && (
           <Fragment>
             <Switch>
+              <Route path="/users">
+                {!isLoggedIn && <Redirect to="/login" />}
+                <Users />
+              </Route>
               <Route path="/dashboard">
                 {!isLoggedIn && <Redirect to="/login" />}
                 <Dashboard />
@@ -70,7 +75,7 @@ const App = () => {
                 {!isLoggedIn && <Redirect to="/login" />}
                 <Menu />
               </Route>
-              <Route path="/orders">
+              <Route path="/orders/:status">
                 {!isLoggedIn && <Redirect to="/login" />}
                 <Order />
               </Route>
