@@ -40,7 +40,6 @@ const GetDetailOrder = () => {
     data: order,
     sendingRequest: getOrder,
     status: statusFetchSingle,
-    error,
   } = useHttp(getDetailOrder, true);
 
   const detailAntreanOrderHandler = (data) => {
