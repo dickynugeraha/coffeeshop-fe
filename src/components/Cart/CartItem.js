@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import classes from "./CartItem.module.css";
-import image from "../../assets/coffee-food-3.jpg";
 import ModalContext from "../../store/modal-context";
 
 const CartItem = (props) => {
@@ -24,7 +23,7 @@ const CartItem = (props) => {
     <li className={classes.cartProducts}>
       <div className={classes.descControl}>
         <div className={classes.imageCart}>
-          <img src={image} alt="product" />
+          <img src={props.imageUrl} alt="product" />
         </div>
         <div className={classes.desc}>
           <h3 className="title">

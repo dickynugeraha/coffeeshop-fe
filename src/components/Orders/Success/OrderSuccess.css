@@ -1,0 +1,27 @@
+.order-success > p {
+  display: inline;
+  margin-right: 20px;
+}
+.order-success h5 {
+  text-align: left;
+  margin: 10px 0;
+}
+.order-success select {
+  margin-right: 10px;
+  padding: 5px 10px;
+}
+.order-success button {
+  padding: 5px 20px;
+  border: none;
+  color: white;
+  background-color: #bb8760;
+  border-radius: 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.action-filter {
+  margin-top: 15px;
+}
+.order-success button:hover {
+  background-color: #c79773;
+}

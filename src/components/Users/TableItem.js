@@ -13,7 +13,7 @@ const TableItem = ({ user, onEdit, onDelete }) => {
     <tr key={user.id}>
       <Fragment>
         <td>{user.name}</td>
-        <td>{user.email}</td>
+        <td>{user.phone}</td>
         <td>
           <span style={{ display: "flex", justifyContent: "center" }}>
             <p className="link" onClick={editButtonClick}>

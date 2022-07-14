@@ -23,22 +23,22 @@ const calculateExpiringTime = (expiringTime) => {
 };
 
 const retrivedStoredToken = () => {
-  const userId = localStorage.getItem("userId");
-  const name = localStorage.getItem("name");
-  const isAdmin = localStorage.getItem("isAdmin");
-  const permOrder = localStorage.getItem("permOrder");
-  const storedToken = localStorage.getItem("token");
-  const expiringTime = localStorage.getItem("expiringTime");
+  const userId = sessionStorage.getItem("userId");
+  const name = sessionStorage.getItem("name");
+  const isAdmin = sessionStorage.getItem("isAdmin");
+  const permOrder = sessionStorage.getItem("permOrder");
+  const storedToken = sessionStorage.getItem("token");
+  const expiringTime = sessionStorage.getItem("expiringTime");
 
   const reminingTime = calculateExpiringTime(expiringTime);
 
   if (reminingTime <= 0) {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("name");
-    localStorage.removeItem("isAdmin");
-    localStorage.removeItem("permOrder");
-    localStorage.removeItem("token");
-    localStorage.removeItem("expiringTime");
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("isAdmin");
+    sessionStorage.removeItem("permOrder");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("expiringTime");
 
     return null;
   }
@@ -81,16 +81,16 @@ export const AuthContextProvider = (props) => {
     setIsAdminVal(isAdmin);
     setPermOrder(true);
 
-    localStorage.setItem("userId", userId);
-    localStorage.setItem("name", name);
+    sessionStorage.setItem("userId", userId);
+    sessionStorage.setItem("name", name);
     if (isAdmin) {
-      localStorage.setItem("isAdmin", "1");
+      sessionStorage.setItem("isAdmin", "1");
     }
     if (!isAdmin) {
-      localStorage.setItem("permOrder", "1");
+      sessionStorage.setItem("permOrder", "1");
     }
-    localStorage.setItem("token", token);
-    localStorage.setItem("expiringTime", expiringTime);
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("expiringTime", expiringTime);
 
     const reminingTime = calculateExpiringTime(expiringTime);
 
@@ -101,12 +101,12 @@ export const AuthContextProvider = (props) => {
     setTokenVal(null);
     setIsAdminVal(false);
     setPermOrder(false);
-    localStorage.removeItem("userId");
-    localStorage.removeItem("name");
-    localStorage.removeItem("isAdmin");
-    localStorage.removeItem("permOrder");
-    localStorage.removeItem("token");
-    localStorage.removeItem("expiringTime");
+    sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("isAdmin");
+    sessionStorage.removeItem("permOrder");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("expiringTime");
 
     if (logoutTimer) {
       clearTimeout(logoutTimer);
@@ -114,12 +114,12 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   const confirmOrderHandler = () => {
-    localStorage.setItem("permOrder", "1");
+    sessionStorage.setItem("permOrder", "1");
     setPermOrder(true);
   };
 
   const denyOrderHandler = () => {
-    localStorage.removeItem("permOrder");
+    sessionStorage.removeItem("permOrder");
     setPermOrder(false);
   };
 

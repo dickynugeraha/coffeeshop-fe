@@ -1,9 +1,7 @@
-import { Fragment } from "react";
 import "../UI/Table2.css";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import TableItem from "./TableItem";
 import EditUserForm from "./EditUserForm";
-import Modal from "../UI/Modal";
 
 const UsersTable = ({
   users,
@@ -11,6 +9,7 @@ const UsersTable = ({
   status,
   onEdit,
   onDelete,
+  onPostEdit,
   onHiddenModal,
   modalIsShow,
 }) => {
@@ -28,7 +27,7 @@ const UsersTable = ({
         <thead>
           <tr>
             <th className="title">Name</th>
-            <th className="title">Email</th>
+            <th className="title">Phone</th>
             <th className="title">Action</th>
           </tr>
         </thead>
@@ -36,7 +35,7 @@ const UsersTable = ({
           {users?.map((item) => (
             <TableItem
               key={item.id}
-              user={{ id: item.id, name: item.name, email: item.email }}
+              user={{ id: item.id, name: item.name, phone: item.phone }}
               onEdit={onEdit}
               onDelete={onDelete}
             />
@@ -44,7 +43,11 @@ const UsersTable = ({
         </tbody>
       </table>
       {modalIsShow && user.length !== 0 && (
-        <EditUserForm onHiddenModal={onHiddenModal} user={user} />
+        <EditUserForm
+          onHiddenModal={onHiddenModal}
+          user={user}
+          onPostEdit={onPostEdit}
+        />
       )}
     </div>
   );

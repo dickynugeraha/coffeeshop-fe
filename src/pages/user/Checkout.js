@@ -1,36 +1,40 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useRef } from "react";
+import { domainUrl } from "../../lib/domain-url";
 import AvailableCheckout from "../../components/Checkout/AvailableCheckout";
 
-const Checkout = ({ userId }) => {
-  const [detailOrder, setDetailOrder] = useState({
-    status: "",
-    orders: [],
-  });
-  console.log(userId);
-  useEffect(() => {
-    fetch(`http://localhost:3002/shop/order-get-by-user`, {
+const Checkout = ({ userId, name }) => {
+  const [orders, setOrders] = useState([]);
+  const [firstLoading, setFirstLoading] = useState(true);
+
+  const fetchDataOrder = () => {
+    fetch(`${domainUrl}/shop/order-get-by-user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: userId }),
     })
       .then((response) => {
-        const data = response.json();
-        return data;
+        return response.json();
       })
       .then((dataOrder) => {
-        setDetailOrder({
-          status: dataOrder.status,
-          orders: dataOrder.orders,
-        });
+        setOrders(dataOrder.orders);
       });
-  }, [userId]);
+  };
+
+  const sendData = useRef(fetchDataOrder);
+
+  useEffect(() => {
+    setInterval(() => {
+      sendData.current();
+      setFirstLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <div>
       <AvailableCheckout
-        orders={detailOrder.orders}
-        status={detailOrder.status}
+        orders={orders}
+        name={name}
+        firstLoading={firstLoading}
       />
     </div>
   );

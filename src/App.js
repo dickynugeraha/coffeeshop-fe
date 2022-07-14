@@ -2,23 +2,30 @@ import { useContext, Fragment } from "react";
 import "./App.css";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
+import AuthContext from "./store/auth-context";
+
 // User
 import Products from "./pages/user/Products";
 import Cart from "./pages/user/Cart";
 import Checkout from "./pages/user/Checkout";
 import Auth from "./pages/Auth";
+import Guide from "./pages/user/Guide";
 // Admin
 import Dashboard from "./pages/admin/Dashboard";
 import Menu from "./pages/admin/Menu";
 import Order from "./pages/admin/Order";
 import NoMatch from "./components/UI/NoMatch";
-import Users from "./pages/admin/Users";
-
-import AuthContext from "./store/auth-context";
 
 const App = () => {
-  const { isLoggedIn, userId, isAdmin, permOrder, denyOrder, confirmOrder } =
-    useContext(AuthContext);
+  const {
+    isLoggedIn,
+    userId,
+    name,
+    isAdmin,
+    permOrder,
+    denyOrder,
+    confirmOrder,
+  } = useContext(AuthContext);
 
   return (
     <div className="App">
@@ -26,10 +33,14 @@ const App = () => {
         <Fragment>
           <Switch>
             <Route path="/" exact>
-              <Redirect to="/products" />
+              {isAdmin && <Redirect to="/dashboard" />}
+              {!isAdmin && <Redirect to="/products" />}
             </Route>
             <Route path="/products" exact>
               <Products />
+            </Route>
+            <Route path="/guide">
+              <Guide />
             </Route>
             <Route path="/login">
               {isLoggedIn && <Redirect to="/" />}
@@ -54,8 +65,11 @@ const App = () => {
               </Route>
               <Route path="/checkout">
                 {!isLoggedIn && <Redirect to="/login" />}
-                {isLoggedIn && !isAdmin && <Checkout userId={userId} />}
+                {isLoggedIn && !isAdmin && (
+                  <Checkout userId={userId} name={name} />
+                )}
               </Route>
+              <Route path={["/menu", "/orders/:status"]} component={NoMatch} />
             </Switch>
           </Fragment>
         )}
@@ -63,10 +77,10 @@ const App = () => {
         {isAdmin && (
           <Fragment>
             <Switch>
-              <Route path="/users">
+              {/* <Route path="/users">
                 {!isLoggedIn && <Redirect to="/login" />}
                 <Users />
-              </Route>
+              </Route> */}
               <Route path="/dashboard">
                 {!isLoggedIn && <Redirect to="/login" />}
                 <Dashboard />
@@ -79,7 +93,7 @@ const App = () => {
                 {!isLoggedIn && <Redirect to="/login" />}
                 <Order />
               </Route>
-              {/* <Route path="*" component={NoMatch} /> */}
+              <Route path={["/cart", "/checkout"]} component={NoMatch} />
             </Switch>
           </Fragment>
         )}

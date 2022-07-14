@@ -18,9 +18,9 @@ const ProductFilter = (props) => {
           value={props.defaultTypeSelected}
         >
           <option value="all">All</option>
-          <option value="dissert">Dissert</option>
-          <option value="coffee">Coffee</option>
-          <option value="main_course">Main Course</option>
+          <option value="Dissert">Dissert</option>
+          <option value="Coffee">Coffee</option>
+          <option value="Main Course">Main Course</option>
         </select>
       </div>
     </div>

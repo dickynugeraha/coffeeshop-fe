@@ -91,16 +91,33 @@ html {
   background-color: #ccc;
 }
 
-.link {
+.link,
+.link a {
   color: #4b7be5;
   border-bottom: 1px solid #4b7be5;
   cursor: pointer;
+  text-decoration: none;
 }
-.link:hover {
+
+.link:hover,
+.link a:hover {
   border-bottom: 1px solid #7599e7;
   color: #7599e7;
 }
-
+select {
+  border: none;
+  border: 1px solid #a1a1a1;
+  border-radius: 2px;
+}
+select:focus {
+  outline: none;
+}
+ol li {
+  margin-bottom: 11px;
+}
+div > h4.success {
+  color: #83bd75;
+}
 ::-webkit-scrollbar {
   width: 2px;
 }

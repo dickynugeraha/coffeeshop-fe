@@ -8,12 +8,20 @@
 }
 .title {
   text-align: left;
+  margin-bottom: 5px;
+}
+.title > span {
+  font-size: 0.9rem;
+  color: grey;
+  font-style: italic;
 }
 .price {
-  font-style: italic;
+  /* font-style: italic; */
   font-size: 0.9rem;
+  font-weight: 100;
   margin-top: 2px;
   text-align: justify;
+  color: rgb(145, 145, 145);
 }
 .checkoutDesc > p {
   margin-top: 10px;

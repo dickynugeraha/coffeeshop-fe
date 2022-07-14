@@ -8,6 +8,17 @@ const EditUserForm = (props) => {
   const [nameEntered, setNameEntered] = useState(user.name);
   const [newPasswordEntered, setNewPasswordEntered] = useState("");
 
+  const submitEditHandler = (e) => {
+    e.preventDefault();
+
+    props.onPostEdit({
+      id: user.id,
+      name: nameEntered,
+      newPassword: newPasswordEntered,
+    });
+
+    props.onHiddenModal();
+  };
   return (
     <Modal onHiddenModal={props.onHiddenModal} forComponent="product">
       <div style={{ padding: "2rem" }}>
@@ -20,7 +31,7 @@ const EditUserForm = (props) => {
         >
           Edit User
         </h2>
-        <form>
+        <form onSubmit={submitEditHandler}>
           <div className="form-control">
             <label htmlFor={"email" + id}>Email</label>
             <input type="email" id={"email" + id} value={user.email} disabled />

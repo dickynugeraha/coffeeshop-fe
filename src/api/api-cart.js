@@ -122,33 +122,3 @@ export const checkoutCart = async (data) => {
 
   return null;
 };
-
-export const getPermissionOrder = async (userId) => {
-  let permission;
-  const response = await fetch(`${domainUrl}/shop/permission-order`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId: userId }),
-  });
-
-  if (!response.ok) {
-    throw new Error("Cannot get permission");
-  }
-
-  const data = await response.json();
-
-  const isAvailableOrder = data.isOrder;
-  const isAvailableCart = data.isCart;
-
-  if (isAvailableOrder === true && isAvailableCart === false) {
-    permission = false;
-  }
-  if (isAvailableOrder === false && isAvailableCart === false) {
-    permission = true;
-  }
-  if (isAvailableCart === null && isAvailableOrder === null) {
-    permission = true;
-  }
-
-  return permission;
-};

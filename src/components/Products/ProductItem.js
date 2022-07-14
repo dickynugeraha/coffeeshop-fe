@@ -1,8 +1,6 @@
 import { Fragment, useState, useContext } from "react";
 import classes from "./ProductItem.module.css";
-import image from "../../assets/coffee-food-3.jpg";
 import ModalContext from "../../store/modal-context";
-import Image from "../UI/Image";
 
 const ProductItem = (props) => {
   const modalCtx = useContext(ModalContext);

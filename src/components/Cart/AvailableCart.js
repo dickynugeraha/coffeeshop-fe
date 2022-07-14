@@ -92,6 +92,7 @@ const AvailableCart = ({
   error,
   onOrderHandler,
   onDenyOrder,
+  statusCheckout,
 }) => {
   const [showComponentTable, setShowComponentTable] = useState(false);
   const [showComponentPayment, setShowComponentPayment] = useState(false);
@@ -99,6 +100,7 @@ const AvailableCart = ({
   const modalCtx = useContext(ModalContext);
 
   const [eatBy, setEatBy] = useState("");
+  const tableCategoryRef = useRef();
   const tableNumberRef = useRef();
   const paymentMethodRef = useRef();
 
@@ -144,7 +146,7 @@ const AvailableCart = ({
     const paymentMethod = paymentMethodRef.current.value;
 
     try {
-      tableNumber = tableNumberRef.current.value;
+      tableNumber = `${tableCategoryRef.current.value}${tableNumberRef.current.value}`;
       data = {
         eat_by: eatBy,
         table_number: tableNumber,
@@ -198,7 +200,7 @@ const AvailableCart = ({
   return (
     <Fragment>
       <div className={classes.cart}>
-        <h1>ORDER</h1>
+        <h1>CART</h1>
         {isLoading && (
           <div className="action">
             <LoadingSpinner />
@@ -220,7 +222,7 @@ const AvailableCart = ({
                 onChange={(e) => {
                   setEatBy(e.target.value);
 
-                  e.target.value === "dine_in"
+                  e.target.value === "Dine In"
                     ? setShowComponentTable(true)
                     : setShowComponentTable(false);
 
@@ -230,8 +232,8 @@ const AvailableCart = ({
                 }}
               >
                 <option value="">--Choose--</option>
-                <option value="dine_in">Dine in</option>
-                <option value="take_away">Take away</option>
+                <option value="Dine In">Dine in</option>
+                <option value="Take Away">Take away</option>
               </select>
             </div>
           </div>
@@ -242,7 +244,19 @@ const AvailableCart = ({
                   <label htmlFor="table_number">Table number</label>
                 </div>
                 <div className={classes.inputed}>
-                  <input type="text" id="table_number" ref={tableNumberRef} />
+                  <select name="category" ref={tableCategoryRef}>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                  </select>
+                  <select name="number" ref={tableNumberRef}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
                 </div>
               </div>
             )}
@@ -253,8 +267,8 @@ const AvailableCart = ({
                 </div>
                 <div className={classes.inputed}>
                   <select id="payment_method" ref={paymentMethodRef}>
-                    <option value="cash">Cash</option>
-                    <option value="credit">Credit</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Debit">Debit</option>
                   </select>
                 </div>
               </div>
@@ -263,7 +277,11 @@ const AvailableCart = ({
         </div>
 
         <div className={classes.action}>
-          <button onClick={checkoutSubmitHandler}>PROCEED TO CHECKOUT</button>
+          <button onClick={checkoutSubmitHandler}>
+            {statusCheckout === "pending"
+              ? "LOADING..."
+              : "PROCEED TO CHECKOUT"}
+          </button>
         </div>
       </div>
       {modalCtx.isShow && loadedProductEdit.length !== 0 && (

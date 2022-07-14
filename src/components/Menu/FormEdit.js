@@ -26,7 +26,7 @@ const FormEdit = (props) => {
       price: priceEntered,
       description: descEntered,
       type: typeChange,
-      isAvailable: stockChange === "1" ? true : false,
+      isAvailable: parseInt(stockChange) === 0 ? false : true,
       img: imageUrl,
     };
 
@@ -133,7 +133,6 @@ const FormEdit = (props) => {
           <div className="form-control">
             <label htmlFor={"imageUrl" + id}>Image </label>
             <input
-              required
               type="file"
               name=""
               id={"imageUrl" + id}

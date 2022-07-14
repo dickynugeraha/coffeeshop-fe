@@ -65,9 +65,12 @@ const AvailableMenu = (props) => {
           onCloseForm={() => setShowFormAdd(false)}
         />
       )}
+      <div className="action">
+        <h2>MENU</h2>
+      </div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <p
-          style={{ marginBottom: "2rem", width: "75px" }}
+          style={{ marginBottom: "2rem" }}
           className="link"
           onClick={() => setShowFormAdd((prevState) => !prevState)}
         >

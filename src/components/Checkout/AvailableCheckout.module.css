@@ -34,17 +34,37 @@
   border: none;
   height: 100%;
 }
-.wrap > div:last-of-type {
+.status {
   width: 37rem;
 }
-.wrap > div:last-of-type h2 {
+
+h4 {
   color: rgb(209, 49, 49);
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 1.1rem;
   text-transform: uppercase;
 }
+
+.status button {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #4e9f3d;
+  color: white;
+}
+
+.checkout-item {
+  margin-top: 3rem;
+}
+
 .itemOrder {
   list-style: none;
   outline: none;
+  max-height: 11rem;
+  overflow-y: scroll;
+  padding-right: 0.5rem;
 }
 .totalAmount {
   margin-top: 0.8rem;
@@ -61,7 +81,7 @@
   .wrap > div:first-of-type {
     width: 100%;
   }
-  .wrap > div:last-of-type {
+  .status {
     width: 100%;
   }
 }

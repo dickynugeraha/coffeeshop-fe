@@ -1,47 +1,70 @@
-import { useEffect, Fragment } from "react";
+import { useContext, useState, useEffect } from "react";
+import useHttp from "../.../../../../hooks/use-http";
+import { getOrderByDate } from "../../../api/api-order";
 import OrderTable from "../OrderTable";
-import useHttp from "../../../hooks/use-http";
-import { getOrderByStatus } from "../../../api/api-order";
 import LoadingSpinner from "../../UI/LoadingSpinner";
+import DetailOrder from "../DetailOrder";
+import ModalContext from "../../../store/modal-context";
+import FilterOrder from "./FilterOrder";
 
-const OrderSuccess = () => {
-  const {
-    data: orders,
-    sendingRequest: getSuccessOrder,
-    status,
-    error,
-  } = useHttp(getOrderByStatus);
+const OrderSuccess = (props) => {
+  const [orders, setOrders] = useState([]);
+  const modalCtx = useContext(ModalContext);
 
   useEffect(() => {
-    getSuccessOrder("success");
-  }, [getSuccessOrder]);
+    setTimeout(() => {
+      setOrders(props.orders);
+    }, 200);
+  }, [props]);
 
-  const BodyContentComponent = BodyContent(status, orders);
+  const {
+    data,
+    status: statusFilter,
+    sendingRequest,
+  } = useHttp(getOrderByDate);
+
+  const filterOrderHandler = ({ start, end }) => {
+    sendingRequest({ start, end });
+    console.log(data);
+    setOrders(data);
+  };
+
+  useEffect(() => {
+    if (statusFilter === "completed") {
+      setOrders(data);
+    }
+  }, [statusFilter, data]);
+
+  let content;
+
+  if (props.status === "pending" || statusFilter === "pending") {
+    content = (
+      <div className="action">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (props.status === "completed" || statusFilter === "completed") {
+    content = <OrderTable orders={orders} onDetail={props.onDetail} />;
+  }
 
   return (
     <div>
-      <OrderTable title="Success Orders">
-        <BodyContentComponent />
-      </OrderTable>
+      <div className="action">
+        <h2 style={{ marginBottom: "4rem" }}>ORDER SUCCESS</h2>
+      </div>
+      <div
+        style={{
+          marginBottom: "1rem",
+        }}
+      >
+        <FilterOrder onFilterOrder={filterOrderHandler} />
+      </div>
+      {content}
+      {modalCtx.isShow && <DetailOrder order={props.order} />}
     </div>
   );
-};
-
-const BodyContent = (status, orders) => {
-  if (status === "pending") {
-    return <LoadingSpinner />;
-  }
-
-  return orders?.map((item) => (
-    <tr>
-      <Fragment>
-        <td>{item.title}</td>
-        <td>{item.type}</td>
-        <td>{item.price}</td>
-        <td>{item.description}</td>
-      </Fragment>
-    </tr>
-  ));
 };
 
 export default OrderSuccess;

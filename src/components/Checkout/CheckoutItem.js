@@ -5,7 +5,10 @@ const CheckoutItem = (props) => {
   return (
     <div className={classes.checkoutDesc}>
       <div>
-        <p className={classes.title}>{props.title}</p>
+        <p className={classes.title}>
+          {props.title}{" "}
+          {props.description && <span> : "{props.description}"</span>}
+        </p>
         <p className={classes.price}>
           (Rp. {props.price} x {props.quantity} pcs)
         </p>

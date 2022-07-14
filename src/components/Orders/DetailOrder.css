@@ -1,0 +1,12 @@
+.itemOrder {
+  list-style: none;
+  outline: none;
+  /* max-height: 11rem; */
+  overflow-y: scroll;
+  padding-right: 0.5rem;
+  padding: 2rem;
+}
+.itemOrder h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}

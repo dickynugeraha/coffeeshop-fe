@@ -87,12 +87,12 @@ export const updatePostProduct = async (dataProduct) => {
   formData.append("title", dataProduct.title);
   formData.append("price", dataProduct.price);
   formData.append("description", dataProduct.description);
-  formData.append("isAvalable", dataProduct.isAvailable);
+  formData.append("isAvailable", dataProduct.isAvailable);
   formData.append("type", dataProduct.type);
   formData.append("image", dataProduct.img);
 
   const response = await fetch(`${domainUrl}/admin/update-product`, {
-    method: "PATCH",
+    method: "PUT",
     body: formData,
   });
 

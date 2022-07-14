@@ -3,7 +3,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ModalContextProvider } from "./store/modal-context";
 import { AuthContextProvider } from "./store/auth-context";
-import { PermOrderContextProvider } from "./store/permOrder-context";
+import { OrderContextProvider } from "./store/order-context";
 import { ProductContextProvider } from "./store/product-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -13,9 +13,9 @@ root.render(
     <AuthContextProvider>
       <ProductContextProvider>
         <ModalContextProvider>
-          <PermOrderContextProvider>
+          <OrderContextProvider>
             <App />
-          </PermOrderContextProvider>
+          </OrderContextProvider>
         </ModalContextProvider>
       </ProductContextProvider>
     </AuthContextProvider>

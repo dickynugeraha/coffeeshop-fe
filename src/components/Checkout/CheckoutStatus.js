@@ -1,22 +1,26 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUserFriends,
   faCogs,
   faCalendarCheck,
   faCheck,
   faTimesCircle,
+  faMoneyBill1Wave,
 } from "@fortawesome/free-solid-svg-icons";
 import classes from "./CheckoutStatus.module.css";
 
 const CheckoutStatus = (props) => {
   const order = props.orderStatus;
 
-  let classActiveAntrean = "",
+  let classActiveVerMoney = "",
     classActiveProcess = "",
     classActiveDelivered = "";
-  if (order === "antrean" || order === "process" || order === "delivered") {
-    classActiveAntrean = `${classes.active}`;
+  if (
+    order === "verify_payment" ||
+    order === "process" ||
+    order === "delivered"
+  ) {
+    classActiveVerMoney = `${classes.active}`;
   }
   if (order === "process" || order === "delivered") {
     classActiveProcess = `${classes.active}`;
@@ -44,14 +48,14 @@ const CheckoutStatus = (props) => {
         <li>
           <div>
             <FontAwesomeIcon
-              className={`${classes.icon} ${classActiveAntrean}`}
-              icon={faUserFriends}
+              className={`${classes.icon} ${classActiveVerMoney}`}
+              icon={faMoneyBill1Wave}
             />
           </div>
-          <div className={`${classActiveAntrean} `}>
-            {classActiveAntrean.trim().length !== 0 ? checkIcon : denyIcon}
+          <div className={`${classActiveVerMoney} `}>
+            {classActiveVerMoney.trim().length !== 0 ? checkIcon : denyIcon}
           </div>
-          <p>Antrean</p>
+          <p>Verify Payment</p>
         </li>
         <li>
           <div>

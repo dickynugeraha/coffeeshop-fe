@@ -51,10 +51,6 @@ const FormAdd = (props) => {
           <input required type="text" id={"title" + id} ref={titleRef} />
         </div>
         <div className="form-control">
-          <label htmlFor={"price" + id}>Price</label>
-          <input required type="text" id={"price" + id} ref={priceRef} />
-        </div>
-        <div className="form-control">
           <label htmlFor={"description" + id}>Description</label>
           <input required type="text" id={"description" + id} ref={descRef} />
         </div>
@@ -67,12 +63,17 @@ const FormAdd = (props) => {
           </select>
         </div>
         <div className="form-control">
-          <label htmlFor={"imageUrl" + id}>Image Url</label>
+          <label htmlFor={"price" + id}>Price</label>
+          <input required type="text" id={"price" + id} ref={priceRef} />
+        </div>
+        <div className="form-control">
+          <label htmlFor={"imageUrl" + id}>Image</label>
           <input
             type="file"
             name=""
             id={"imageUrl" + id}
             onChange={valueImage}
+            required
           />
         </div>
         <div className="form-control">
@@ -80,7 +81,9 @@ const FormAdd = (props) => {
             className={`action`}
             style={{ marginTop: "2rem", textAlign: "left" }}
           >
-            <button style={{ backgroundColor: "##bb8760" }}>Add</button>
+            <button className="title" style={{ backgroundColor: "##bb8760" }}>
+              Add
+            </button>
           </div>
         </div>
       </form>

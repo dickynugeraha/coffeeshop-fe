@@ -1,22 +1,40 @@
-import { useEffect } from "react";
-import useHttp from "../../../hooks/use-http";
-import { getOrderByStatus } from "../../../api/api-order";
+import { useContext } from "react";
+import AntreanTable from "./AntreanTable";
+import LoadingSpinner from "../../UI/LoadingSpinner";
+import DetailOrder from "../DetailOrder";
+import ModalContext from "../../../store/modal-context";
 
-const OrderAntrean = () => {
-  const {
-    data: orders,
-    sendingRequest: getOrders,
-    status,
-    error,
-  } = useHttp(getOrderByStatus, true);
+const OrderAntrean = (props) => {
+  const modalCtx = useContext(ModalContext);
 
-  useEffect(() => {
-    getOrders("antrean");
-  }, [getOrders]);
+  let content;
 
-  console.log(orders);
+  if (props.status === "pending") {
+    content = (
+      <div className="action">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+  if (props.status === "completed") {
+    content = (
+      <AntreanTable
+        orders={props.orders}
+        onDetail={props.onDetail}
+        onChangeStatus={props.onChangeStatus}
+      />
+    );
+  }
 
-  return <div>OrderAntrean</div>;
+  return (
+    <div>
+      <div className="action">
+        <h2 style={{ marginBottom: "4rem" }}>ORDER IN ANREAN</h2>
+      </div>
+      {content}
+      {modalCtx.isShow && <DetailOrder order={props.order} />}
+    </div>
+  );
 };
 
 export default OrderAntrean;

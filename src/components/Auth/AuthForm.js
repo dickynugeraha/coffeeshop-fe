@@ -11,25 +11,35 @@ const AuthForm = () => {
   const authCtx = useContext(AuthContext);
 
   const nameInputRef = useRef();
-  const emailInputRef = useRef();
+  const phoneInputRef = useRef();
   const passwordInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
+  const [isChangePass, setIsChangePass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
+    setIsChangePass(false);
+  };
+
+  const changePassHandler = () => {
+    setIsChangePass(true);
   };
 
   const submitAuthHandler = (e) => {
     e.preventDefault();
 
     let nameValue, data, url;
-    const emailValue = emailInputRef.current.value;
+    const phoneValue = phoneInputRef.current.value;
     const passwordValue = passwordInputRef.current.value;
 
-    if (!emailValue || !passwordValue) {
+    if (!phoneValue || !passwordValue) {
       alert("Please entered input!");
+      return;
+    }
+    if (phoneValue.trim().length < 10) {
+      alert("Please entered valid phone number!");
       return;
     }
 
@@ -37,14 +47,40 @@ const AuthForm = () => {
       nameValue = nameInputRef.current.value;
       data = {
         name: nameValue,
-        email: emailValue,
+        phone: phoneValue,
         password: passwordValue,
       };
-    } catch (error) {
+    } catch (err) {
       data = {
-        email: emailValue,
+        phone: phoneValue,
         password: passwordValue,
       };
+    }
+
+    if (isChangePass) {
+      setIsLoading(true);
+      fetch(`${domainUrl}/auth/account`, {
+        method: "PUT",
+        body: JSON.stringify({
+          phone: phoneValue,
+          newPassword: passwordValue,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          setIsLoading(false);
+          setIsLogin(true);
+          setIsChangePass(false);
+
+          alert("Successfully change password!");
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          alert(err.message);
+        });
+      return;
     }
 
     if (isLogin) {
@@ -68,13 +104,11 @@ const AuthForm = () => {
         if (res.ok) {
           return res.json();
         } else {
-          return res.json().then((data) => {
-            let errorMessage = "Authentication failed!";
-            if (data && data.error && data.error.message) {
-              errorMessage = data.error.message;
-            }
-            throw new Error(errorMessage);
-          });
+          if (res.status === 401) {
+            return res.json().then((data) => {
+              throw new Error(data.message);
+            });
+          }
         }
       })
       .then((data) => {
@@ -99,7 +133,11 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? "Sign In" : "Sign Up"}</h1>
+      <h1>
+        {isLogin && !isChangePass ? "Sign In" : ""}
+        {!isLogin && !isChangePass ? "Sign Up" : ""}
+        {isChangePass && "Change Password"}
+      </h1>
       <form onSubmit={submitAuthHandler}>
         {!isLogin && (
           <div className={classes.control}>
@@ -108,11 +146,11 @@ const AuthForm = () => {
           </div>
         )}
         <div className={classes.control}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
+          <label htmlFor="phone">Phone Number</label>
+          <input type="phone" id="phone" required ref={phoneInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{isChangePass ? "New " : ""}Password</label>
           <input
             type="password"
             id="password"
@@ -120,12 +158,26 @@ const AuthForm = () => {
             ref={passwordInputRef}
           />
         </div>
-        <p className={classes.toggle} onClick={switchAuthModeHandler}>
-          {isLogin ? "Register" : "Do you have account?"}
-        </p>
+        <div className={classes.actionAuth}>
+          <div>
+            <p className={classes.toggle} onClick={switchAuthModeHandler}>
+              {isLogin ? "Register" : "Do you have account?"}
+            </p>
+          </div>
+          <div>
+            <p className={classes.toggle} onClick={changePassHandler}>
+              {isLogin && !isChangePass ? "Forget the password?" : ""}
+            </p>
+          </div>
+        </div>
+
         <div className={classes.actions}>
           {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
+            <button>
+              {isLogin && !isChangePass ? "login" : ""}
+              {!isLogin && !isChangePass ? "Create account" : ""}
+              {isChangePass && "Update"}
+            </button>
           )}
           {isLoading && <p>Loading...</p>}
         </div>

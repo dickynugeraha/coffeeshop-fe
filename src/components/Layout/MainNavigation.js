@@ -31,14 +31,14 @@ const MainNavigation = () => {
           <Fragment>
             {isAdmin && (
               <Fragment>
-                <li>
+                {/* <li>
                   <Link to="/users">
                     <p>Users</p>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/menu">
-                    <p>Products</p>
+                    <p>Menu</p>
                   </Link>
                 </li>
                 <li className={classes.order}>
@@ -51,24 +51,52 @@ const MainNavigation = () => {
                 </li>
               </Fragment>
             )}
+
             {!isAdmin && (
-              <li style={{ height: "40px" }}>
-                <Link to="/cart">
-                  <div className={classes["btn_cart"]}>Cart</div>
-                </Link>
-              </li>
+              <Fragment>
+                <li style={{ height: "40px" }}>
+                  <Link to="/cart">
+                    <div className={classes["btn_cart"]}>Cart</div>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/checkout">
+                    <p>Order List</p>
+                  </Link>
+                </li>
+              </Fragment>
             )}
+            <Fragment>
+              {!isAdmin && (
+                <li>
+                  <Link to="/guide">
+                    <p>Guide</p>
+                  </Link>
+                </li>
+              )}
+            </Fragment>
             <li>
               <p onClick={logoutHandler}>Logout</p>
             </li>
           </Fragment>
         )}
+
         {!isLoggedIn && (
-          <li>
-            <Link to="/login">
-              <p>Login</p>
-            </Link>
-          </li>
+          <Fragment>
+            {!isAdmin && (
+              <li>
+                <Link to="/guide">
+                  <p>Guide</p>
+                </Link>
+              </li>
+            )}
+            <li>
+              <Link to="/login">
+                <p>Login</p>
+              </Link>
+            </li>
+          </Fragment>
         )}
       </ul>
     </nav>

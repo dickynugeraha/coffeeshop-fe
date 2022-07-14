@@ -2,7 +2,7 @@ import { useRef, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import classes from "./ProductItemForm.module.css";
-import { addToCart, getPermissionOrder } from "../../api/api-cart";
+import { addToCart } from "../../api/api-cart";
 import useHttp from "../../hooks/use-http";
 import Modal from "../../components/UI/Modal";
 import AuthContext from "../../store/auth-context";
@@ -16,23 +16,14 @@ const ProductItemForm = (props) => {
   const [description, setDescription] = useState("");
 
   const { sendingRequest: sendingAddCart, status } = useHttp(addToCart);
-  const { sendingRequest: checkPermission, data: permission } =
-    useHttp(getPermissionOrder);
 
   const addCartHandler = (e) => {
     e.preventDefault();
+
     if (!authCtx.isLoggedIn) {
       alert("Please login first!");
       props.onHiddenModal();
       return history.push("/login");
-    }
-
-    checkPermission(authCtx.userId);
-
-    if (!permission) {
-      alert("Please complete your order !");
-      props.onHiddenModal();
-      return history.push("/checkout");
     }
 
     const quantity = amountRef.current.value;
@@ -58,6 +49,7 @@ const ProductItemForm = (props) => {
   return (
     <Modal onHiddenModal={props.onHiddenModal} forComponent="product">
       <form className={classes.form} onSubmit={addCartHandler}>
+        <h3 className="title">Detail Order</h3>
         <div className="form-control">
           <label htmlFor={`amount_ + ${props.id}`}>Amount</label>
           <input
@@ -78,7 +70,7 @@ const ProductItemForm = (props) => {
               setDescription(e.target.value);
             }}
             value={description}
-            placeholder="ex: 1 hot, 1 cool"
+            placeholder="..."
           />
         </div>
         <div className="action">

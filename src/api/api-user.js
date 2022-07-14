@@ -29,3 +29,39 @@ export const getFetchSingleUser = async (userId) => {
 
   return data.user;
 };
+
+export const postUpdateUser = async (dataUser) => {
+  const response = await fetch(`${domainUrl}/admin/update-user`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: dataUser.id,
+      name: dataUser.name,
+      newPassword: dataUser.newPassword,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Cannot update users");
+  }
+
+  return null;
+};
+
+export const deleteUser = async (userId) => {
+  const response = await fetch(`${domainUrl}/admin/delete-user`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userId: userId }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Cannot update users");
+  }
+
+  return null;
+};

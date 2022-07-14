@@ -25,6 +25,7 @@
   font-style: italic;
   color: #f1f1f1;
   cursor: pointer;
+  text-align: center;
 }
 
 .nav-items {
@@ -98,15 +99,21 @@ li.order:hover div.dropdown-content {
   display: block;
 }
 
+@media screen and (max-width: 840px) {
+  .logo {
+    font-size: 1.2rem;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .navbar {
     padding: 0 5%;
   }
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   .nav-items li {
-    margin: 0 0.5rem;
+    margin: 0 0.3rem;
   }
 }
 
