@@ -2,11 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import WrapContent from "../../components/UI/WrapContent";
 import AvailableCart from "../../components/Cart/AvailableCart";
-import {
-  fetchCartByUser,
-  checkoutCart,
-  getPermissionOrder,
-} from "../../api/api-cart";
+import { fetchCartByUser, checkoutCart } from "../../api/api-cart";
 import useHttp from "../../hooks/use-http";
 
 const LoadedProductCart = (userId) => {
@@ -50,7 +46,7 @@ const CheckoutCartForOrder = (userId) => {
 };
 
 const Cart = (props) => {
-  const { userId, denyOrder } = props;
+  const { userId } = props;
   const history = useHistory();
 
   // sending loaded cart product
@@ -59,12 +55,6 @@ const Cart = (props) => {
 
   // sending checkout procceed
   const { statusCheckout, orderHandler } = CheckoutCartForOrder(userId);
-
-  // checking permision
-
-  const denyOrderHandler = () => {
-    denyOrder();
-  };
 
   // redirect to checkout if user done orders
   useEffect(() => {
@@ -81,7 +71,6 @@ const Cart = (props) => {
         error={errorLoaded}
         onChanged={changedHandler}
         onOrderHandler={orderHandler}
-        onDenyOrder={denyOrderHandler}
         statusCheckout={statusCheckout}
       />
     </WrapContent>

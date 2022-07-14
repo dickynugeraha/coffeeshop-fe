@@ -17,15 +17,7 @@ import Order from "./pages/admin/Order";
 import NoMatch from "./components/UI/NoMatch";
 
 const App = () => {
-  const {
-    isLoggedIn,
-    userId,
-    name,
-    isAdmin,
-    permOrder,
-    denyOrder,
-    confirmOrder,
-  } = useContext(AuthContext);
+  const { isLoggedIn, userId, name, isAdmin } = useContext(AuthContext);
 
   return (
     <div className="App">
@@ -54,14 +46,7 @@ const App = () => {
             <Switch>
               <Route path="/cart">
                 {!isLoggedIn && <Redirect to="/login" />}
-                {isLoggedIn && !isAdmin && (
-                  <Cart
-                    userId={userId}
-                    permOrder={permOrder}
-                    denyOrder={denyOrder}
-                    confirmOrder={confirmOrder}
-                  />
-                )}
+                {isLoggedIn && !isAdmin && <Cart userId={userId} />}
               </Route>
               <Route path="/checkout">
                 {!isLoggedIn && <Redirect to="/login" />}
