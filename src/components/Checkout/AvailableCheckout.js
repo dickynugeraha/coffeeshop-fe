@@ -7,14 +7,13 @@ const AvailableCheckout = (props) => {
 
   let checkoutContent;
 
-  if (orders) {
+  if (orders.length !== 0) {
     checkoutContent = orders?.map((item, index) => (
       <div className={classes["checkout-item"]} key={index}>
         <OrderItems products={item.products} status={item.status} />
       </div>
     ));
   }
-
   if (orders.length === 0) {
     checkoutContent = (
       <div className="action" style={{ margin: "8rem" }}>
@@ -22,7 +21,6 @@ const AvailableCheckout = (props) => {
       </div>
     );
   }
-
   if (firstLoading) {
     checkoutContent = (
       <div className="action" style={{ margin: "6rem" }}>

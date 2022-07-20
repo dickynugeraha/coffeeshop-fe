@@ -91,7 +91,6 @@ const AvailableCart = ({
   onChanged,
   error,
   onOrderHandler,
-  onDenyOrder,
   statusCheckout,
 }) => {
   const [showComponentTable, setShowComponentTable] = useState(false);
@@ -159,7 +158,6 @@ const AvailableCart = ({
       };
     }
 
-    onDenyOrder();
     onOrderHandler(data);
   };
 
