@@ -41,7 +41,7 @@ const App = () => {
                 {isAdmin && <Redirect to="/dashboard" />}
                 {!isAdmin && <Redirect to="/products" />}
               </Route>
-              <Route path="/products" exact>
+              <Route path="/products">
                 <Products />
               </Route>
               <Route path="/guide">
