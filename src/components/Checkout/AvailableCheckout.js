@@ -10,7 +10,13 @@ const AvailableCheckout = (props) => {
   if (orders.length !== 0) {
     checkoutContent = orders?.map((item, index) => (
       <div className={classes["checkout-item"]} key={index}>
-        <OrderItems products={item.products} status={item.status} />
+        <OrderItems
+          status={item.status}
+          dateOrder={item.dateOrder}
+          eat_by={item.eat_by}
+          table_number={item.table_number}
+          products={item.products}
+        />
       </div>
     ));
   }

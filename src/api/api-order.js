@@ -52,8 +52,6 @@ export const editStatusOrder = async (dataOrder) => {
 };
 
 export const getOrderByDate = async (date) => {
-  console.log(date);
-
   const response = await fetch(`${domainUrl}/admin/get-orders-date`, {
     method: "POST",
     headers: {

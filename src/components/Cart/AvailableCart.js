@@ -249,11 +249,11 @@ const AvailableCart = ({
                     <option value="D">D</option>
                   </select>
                   <select name="number" ref={tableNumberRef}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="01">1</option>
+                    <option value="02">2</option>
+                    <option value="03">3</option>
+                    <option value="04">4</option>
+                    <option value="05">5</option>
                   </select>
                 </div>
               </div>

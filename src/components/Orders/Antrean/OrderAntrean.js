@@ -17,13 +17,15 @@ const OrderAntrean = (props) => {
     );
   }
   if (props.status === "completed") {
-    content = (
-      <AntreanTable
-        orders={props.orders}
-        onDetail={props.onDetail}
-        onChangeStatus={props.onChangeStatus}
-      />
-    );
+    if (props.orders.length !== 0) {
+      content = (
+        <AntreanTable
+          orders={props.orders}
+          onDetail={props.onDetail}
+          onChangeStatus={props.onChangeStatus}
+        />
+      );
+    }
   }
 
   return (

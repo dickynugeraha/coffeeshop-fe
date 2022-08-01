@@ -15,6 +15,13 @@
 .container h1 {
   font-weight: 400;
 }
+.detail_order {
+  margin-bottom: 20px;
+  color: #a8a8a8;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 0.8rem;
+}
 .wrap {
   display: flex;
   justify-content: space-between;
@@ -27,7 +34,7 @@
   padding: 1.5rem;
 }
 .wrap h1 {
-  margin-bottom: 30px;
+  margin-bottom: 2px;
 }
 .wrap > div:first-of-type {
   width: 23rem;

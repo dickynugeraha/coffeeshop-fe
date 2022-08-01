@@ -5,9 +5,14 @@ import CheckoutItem from "./CheckoutItem";
 import CheckoutStatus from "./CheckoutStatus";
 
 const OrderItems = (props) => {
-  const { products, status } = props;
+  const { products, status, dateOrder, eat_by, table_number } = props;
 
   // helper
+  const dateHelper = (datetime) => {
+    const date = new Date(datetime);
+    return date.toLocaleString();
+  };
+
   const summaryPrice = [];
   for (const key in products) {
     summaryPrice.push(products[key].pricePerItem);
@@ -22,6 +27,9 @@ const OrderItems = (props) => {
       <div className={classes.wrap}>
         <div>
           <h1 className="title">Detail</h1>
+          <p className={classes.detail_order}>
+            {dateHelper(dateOrder)} ({eat_by} - {table_number})
+          </p>
           <ul className={classes.itemOrder}>
             {products.map((item) => (
               <CheckoutItem

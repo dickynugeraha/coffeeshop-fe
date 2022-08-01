@@ -11,12 +11,6 @@ const OrderSuccess = (props) => {
   const [orders, setOrders] = useState([]);
   const modalCtx = useContext(ModalContext);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setOrders(props.orders);
-    }, 200);
-  }, [props]);
-
   const {
     data,
     status: statusFilter,
@@ -25,7 +19,6 @@ const OrderSuccess = (props) => {
 
   const filterOrderHandler = ({ start, end }) => {
     sendingRequest({ start, end });
-    console.log(data);
     setOrders(data);
   };
 
@@ -35,7 +28,7 @@ const OrderSuccess = (props) => {
     }
   }, [statusFilter, data]);
 
-  let content;
+  let content = "";
 
   if (props.status === "pending" || statusFilter === "pending") {
     content = (
@@ -46,7 +39,9 @@ const OrderSuccess = (props) => {
   }
 
   if (props.status === "completed" || statusFilter === "completed") {
-    content = <OrderTable orders={orders} onDetail={props.onDetail} />;
+    if (orders.length !== 0) {
+      content = <OrderTable orders={orders} onDetail={props.onDetail} />;
+    }
   }
 
   return (

@@ -6,6 +6,7 @@ import {
   getDetailOrder,
   editStatusOrder,
 } from "../../api/api-order";
+import WrapContent from "../../components/UI/WrapContent";
 
 import OrderAntrean from "../../components/Orders/Antrean/OrderAntrean";
 import OrderSuccess from "../../components/Orders/Success/OrderSuccess";
@@ -98,35 +99,37 @@ const Order = () => {
   }, [fetchAgain, statusChange]);
 
   return (
-    <div style={{ padding: "5% 9%" }}>
-      <div style={{ margin: "3rem auto" }}>
-        {status === "antrean" && (
-          <OrderAntrean
-            orders={orders}
-            status={statusFetch}
-            order={order}
-            onDetail={detailAntreanOrderHandler}
-            onChangeStatus={changeStatusCompleted}
-          />
-        )}
-        {status === "success" && (
-          <OrderSuccess
-            orders={orders}
-            status={statusFetch}
-            onDetail={detailSuccessOrderHandler}
-            order={order}
-          />
-        )}
-        {status === "cancel" && (
-          <OrderCancel
-            orders={orders}
-            status={statusFetch}
-            onDetail={detailCancelOrderHandler}
-            order={order}
-          />
-        )}
+    <WrapContent>
+      <div style={{ padding: "5% 9%" }}>
+        <div style={{ margin: "3rem auto" }}>
+          {status === "antrean" && (
+            <OrderAntrean
+              orders={orders}
+              status={statusFetch}
+              order={order}
+              onDetail={detailAntreanOrderHandler}
+              onChangeStatus={changeStatusCompleted}
+            />
+          )}
+          {status === "success" && (
+            <OrderSuccess
+              orders={orders}
+              status={statusFetch}
+              onDetail={detailSuccessOrderHandler}
+              order={order}
+            />
+          )}
+          {status === "cancel" && (
+            <OrderCancel
+              orders={orders}
+              status={statusFetch}
+              onDetail={detailCancelOrderHandler}
+              order={order}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </WrapContent>
   );
 };
 

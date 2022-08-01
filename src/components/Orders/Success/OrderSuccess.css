@@ -19,6 +19,15 @@
   transition: all 0.2s;
   cursor: pointer;
 }
+.date {
+  padding: 5px;
+  border: none;
+  border: 1px solid #acacac;
+  border-radius: 1px;
+}
+.date:focus {
+  outline: none;
+}
 .action-filter {
   margin-top: 15px;
 }
