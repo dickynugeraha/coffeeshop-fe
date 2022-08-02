@@ -72,8 +72,8 @@
 }
 @media screen and (max-width: 575px) {
   .productHeader {
-    height: 170px;
-    width: 150px;
+    height: 180px;
+    width: 120px;
   }
 
   .product h3,

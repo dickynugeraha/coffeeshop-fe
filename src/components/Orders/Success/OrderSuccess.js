@@ -11,6 +11,8 @@ const OrderSuccess = (props) => {
   const [orders, setOrders] = useState([]);
   const modalCtx = useContext(ModalContext);
 
+  console.log(props.orders);
+
   const {
     data,
     status: statusFilter,

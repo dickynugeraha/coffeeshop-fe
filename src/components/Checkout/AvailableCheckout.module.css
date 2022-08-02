@@ -5,22 +5,14 @@
   border-radius: 2px;
   color: #414141;
 }
-.container .forName {
+
+.container h1 {
+  font-weight: 400;
   margin: 2rem 0;
   text-align: center;
   text-transform: uppercase;
   color: #414141;
   font-size: 2rem;
-}
-.container h1 {
-  font-weight: 400;
-}
-.detail_order {
-  margin-bottom: 20px;
-  color: #a8a8a8;
-  font-weight: 100;
-  font-style: italic;
-  font-size: 0.8rem;
 }
 .wrap {
   display: flex;
@@ -33,13 +25,23 @@
 .wrap > div {
   padding: 1.5rem;
 }
-.wrap h1 {
-  margin-bottom: 2px;
-}
-.wrap > div:first-of-type {
+.detail_order {
   width: 23rem;
   border: none;
   height: 100%;
+}
+.detail_order > h1 {
+  margin-bottom: 10px;
+}
+.detail_order > p {
+  margin-bottom: 20px;
+  color: #a8a8a8;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+.status_order h1 {
+  margin-bottom: 30px;
 }
 .status {
   width: 37rem;
@@ -48,7 +50,8 @@
 h4 {
   color: rgb(209, 49, 49);
   font-weight: 400;
-  font-size: 1.1rem;
+  text-align: center;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 
@@ -90,5 +93,11 @@ h4 {
   }
   .status {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container h1 {
+    font-size: 1.2rem;
   }
 }

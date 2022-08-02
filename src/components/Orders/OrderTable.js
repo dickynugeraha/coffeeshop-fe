@@ -1,5 +1,5 @@
 import "../UI/Table2.css";
-import TableItem from "./Antrean/TableItem";
+import TableItem from "./TableItem";
 
 const OrderTable = (props) => {
   return (

@@ -18,6 +18,9 @@
   margin-bottom: 10px;
   border-radius: 50%;
 }
+.progress-item {
+  min-width: 380px;
+}
 .progress-item li > div:nth-of-type(2)::after {
   content: "";
   background: #ccc;
@@ -47,6 +50,11 @@
 @media screen and (max-width: 580px) {
   .progress-item > li,
   .progress-item li > div:nth-of-type(2)::after {
-    width: 125px;
+    width: 120px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .progress-item p {
+    font-size: 0.8rem;
   }
 }

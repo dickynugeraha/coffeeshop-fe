@@ -1,9 +1,10 @@
 import classes from "./AvailableCheckout.module.css";
 import OrderItems from "./OrderItems";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import WrapContent from "../UI/WrapContent";
 
 const AvailableCheckout = (props) => {
-  const { orders, name, firstLoading } = props;
+  const { orders, name, firstLoading, loadOrder } = props;
 
   let checkoutContent;
 
@@ -20,7 +21,7 @@ const AvailableCheckout = (props) => {
       </div>
     ));
   }
-  if (orders.length === 0) {
+  if (orders.length === 0 && !loadOrder) {
     checkoutContent = (
       <div className="action" style={{ margin: "8rem" }}>
         <h4>NOT ORDER YET!</h4>
@@ -36,10 +37,12 @@ const AvailableCheckout = (props) => {
   }
 
   return (
-    <section className={classes.container}>
-      <h1 className={`title ${classes.forName}`}>{name}'s order</h1>
-      {checkoutContent}
-    </section>
+    <WrapContent>
+      <section className={classes.container}>
+        <h1 className="title">{name}'s order</h1>
+        {checkoutContent}
+      </section>
+    </WrapContent>
   );
 };
 

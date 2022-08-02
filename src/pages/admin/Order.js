@@ -43,22 +43,14 @@ const GetDetailOrder = () => {
     status: statusFetchSingle,
   } = useHttp(getDetailOrder, true);
 
-  const detailAntreanOrderHandler = (data) => {
-    getOrder(data);
-  };
-  const detailSuccessOrderHandler = (data) => {
-    getOrder(data);
-  };
-  const detailCancelOrderHandler = (data) => {
-    getOrder(data);
+  const detailOrderHandler = (orderId) => {
+    getOrder(orderId);
   };
 
   return {
     order,
     statusdetail: statusFetchSingle,
-    detailAntreanOrderHandler,
-    detailSuccessOrderHandler,
-    detailCancelOrderHandler,
+    detailOrderHandler,
   };
 };
 
@@ -80,12 +72,7 @@ const Order = () => {
   const { status } = useParams();
 
   const { orders, statusFetch, fetchAgain } = GetAllOrders(status);
-  const {
-    order,
-    detailAntreanOrderHandler,
-    detailSuccessOrderHandler,
-    detailCancelOrderHandler,
-  } = GetDetailOrder();
+  const { order, detailOrderHandler } = GetDetailOrder();
   const { changeStatusHandler, statusChange } = UpdateStatusOrder();
 
   const changeStatusCompleted = (data) => {
@@ -107,7 +94,7 @@ const Order = () => {
               orders={orders}
               status={statusFetch}
               order={order}
-              onDetail={detailAntreanOrderHandler}
+              onDetail={detailOrderHandler}
               onChangeStatus={changeStatusCompleted}
             />
           )}
@@ -115,7 +102,7 @@ const Order = () => {
             <OrderSuccess
               orders={orders}
               status={statusFetch}
-              onDetail={detailSuccessOrderHandler}
+              onDetail={detailOrderHandler}
               order={order}
             />
           )}
@@ -123,7 +110,7 @@ const Order = () => {
             <OrderCancel
               orders={orders}
               status={statusFetch}
-              onDetail={detailCancelOrderHandler}
+              onDetail={detailOrderHandler}
               order={order}
             />
           )}

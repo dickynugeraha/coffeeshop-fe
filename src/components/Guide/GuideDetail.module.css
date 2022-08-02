@@ -1,0 +1,25 @@
+.wrap_guide {
+  margin: 7rem 15%;
+  text-align: justify;
+}
+.guide {
+  padding: 2rem 3rem 2rem 4rem;
+}
+.guide h2 {
+  text-align: "center";
+  margin-bottom: "1rem";
+}
+@media screen and (max-width: 500px) {
+  .wrap_guide {
+    margin: 7rem 5%;
+  }
+  .guide {
+    padding: 1rem 2rem 1rem 3rem;
+  }
+  .guide h2 {
+    font-size: 0.9rem;
+  }
+  .guide li {
+    font-size: 0.7rem;
+  }
+}

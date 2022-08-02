@@ -25,9 +25,9 @@ const OrderItems = (props) => {
   return (
     <Card>
       <div className={classes.wrap}>
-        <div>
+        <div className={classes.detail_order}>
           <h1 className="title">Detail</h1>
-          <p className={classes.detail_order}>
+          <p>
             {dateHelper(dateOrder)} ({eat_by} - {table_number})
           </p>
           <ul className={classes.itemOrder}>
@@ -47,23 +47,21 @@ const OrderItems = (props) => {
             <span>Rp. {sum}</span>
           </div>
         </div>
-        <div>
-          <div>
-            <h1 className="title">Status</h1>
-            <CheckoutStatus orderStatus={status} />
-            {status === "antrean" && <h4>Prepare your money, please</h4>}
-            {status === "verify_payment" && (
-              <h4 className="success">
-                Verified payment, Please screenshot for proof of payment{" "}
-              </h4>
-            )}
-            {status === "process" && (
-              <h4>Your order is in the making, please dont left your table</h4>
-            )}
-            {status === "delivered" && (
-              <h4 className="success">Your order is already on delivery</h4>
-            )}
-          </div>
+        <div className={classes.status_order}>
+          <h1 className="title">Status</h1>
+          <CheckoutStatus orderStatus={status} />
+          {status === "antrean" && <h4>Prepare your money, please</h4>}
+          {status === "verify_payment" && (
+            <h4 className="success">
+              Verified payment, Please screenshot for proof of payment{" "}
+            </h4>
+          )}
+          {status === "process" && (
+            <h4>Your order is in the making, please dont left your table</h4>
+          )}
+          {status === "delivered" && (
+            <h4 className="success">Your order is already on delivery</h4>
+          )}
         </div>
       </div>
     </Card>

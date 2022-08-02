@@ -5,6 +5,7 @@ import AvailableCheckout from "../../components/Checkout/AvailableCheckout";
 const Checkout = ({ userId, name }) => {
   const [orders, setOrders] = useState([]);
   const [firstLoading, setFirstLoading] = useState(true);
+  const [loadOrder, setLoadOrder] = useState(true);
 
   const fetchDataOrder = () => {
     fetch(`${domainUrl}/shop/order-get-by-user`, {
@@ -13,9 +14,11 @@ const Checkout = ({ userId, name }) => {
       body: JSON.stringify({ userId: userId }),
     })
       .then((response) => {
+        setLoadOrder(false);
         return response.json();
       })
       .then((dataOrder) => {
+        setLoadOrder(false);
         setOrders(dataOrder.orders);
       });
   };
@@ -35,6 +38,7 @@ const Checkout = ({ userId, name }) => {
         orders={orders}
         name={name}
         firstLoading={firstLoading}
+        loadOrder={loadOrder}
       />
     </div>
   );

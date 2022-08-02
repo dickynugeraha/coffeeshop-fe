@@ -7,7 +7,6 @@
 .cart > h1 {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  /* border-bottom: 1px solid #ccc; */
   font-weight: 400;
 }
 
@@ -47,10 +46,6 @@
   width: 8rem;
 }
 
-/* .section_table {
-  display: flex;
-} */
-
 .payment,
 .table_number {
   display: flex;
@@ -81,6 +76,7 @@ div.inputed {
   border: none;
   padding-left: 0;
   width: 7rem;
+  margin-right: 10px;
 }
 
 .action button {
@@ -105,5 +101,22 @@ div.inputed {
 @media screen and (max-width: 800px) {
   .cart {
     padding: 0 10%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cart > h1 {
+    font-size: 1.2rem;
+  }
+  .total h2 {
+    font-size: 1.1rem;
+  }
+  .eat_by .inputed > select,
+  .table_number label,
+  .payment label {
+    font-size: 0.9rem;
+  }
+  .table_number > div {
+    width: 7rem;
   }
 }

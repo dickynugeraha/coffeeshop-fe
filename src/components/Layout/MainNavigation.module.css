@@ -39,7 +39,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  height: 23px;
+  /* height: 23px; */
 }
 
 .nav-items li p {
@@ -87,7 +87,6 @@
   text-decoration: none;
   display: block;
   text-align: left;
-  /* text-transform: none; */
   letter-spacing: normal;
 }
 
@@ -113,13 +112,19 @@ li.order:hover div.dropdown-content {
     font-size: 1.1rem;
   }
   .nav-items li {
-    margin: 0 0.3rem;
+    margin: 0 0.5rem;
   }
 }
 
 @media screen and (max-width: 500px) {
   .logo {
-    letter-spacing: 1px;
-    font-size: 1rem;
+    font-size: 0.8rem;
+  }
+  .btn_cart {
+    padding: 0.2rem 0.8rem;
+    font-size: 0.7rem;
+  }
+  .nav-items li {
+    font-size: 0.7rem;
   }
 }

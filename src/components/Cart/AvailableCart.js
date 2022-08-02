@@ -136,6 +136,10 @@ const AvailableCart = ({
   ]);
 
   const checkoutSubmitHandler = () => {
+    if (products.length === 0) {
+      alert("Please add product to cart!");
+      return;
+    }
     if (eatBy.trim() === "") {
       alert("Please choose eat by!");
       return;
@@ -198,7 +202,7 @@ const AvailableCart = ({
   return (
     <Fragment>
       <div className={classes.cart}>
-        <h1>CART</h1>
+        <h1 className="title">CART</h1>
         {isLoading && (
           <div className="action">
             <LoadingSpinner />
