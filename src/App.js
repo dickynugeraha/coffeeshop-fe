@@ -29,7 +29,7 @@ const App = () => {
         <Suspense
           fallback={
             <WrapContent>
-              <div className="action" style={{ marginTop: "5rem" }}>
+              <div className="action" style={{ marginTop: "6rem" }}>
                 <LoadingSpinner />
               </div>
             </WrapContent>
@@ -39,11 +39,9 @@ const App = () => {
             <Switch>
               <Route path="/" exact>
                 {isAdmin && <Redirect to="/dashboard" />}
-                {!isAdmin && <Redirect to="/products" />}
+                {!isAdmin && <Products />}
               </Route>
-              <Route path="/products">
-                <Products />
-              </Route>
+
               <Route path="/guide">
                 <Guide />
               </Route>
