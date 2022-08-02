@@ -16,7 +16,7 @@ const MainNavigation = () => {
     history.push("/");
   };
 
-  let link = "/products";
+  let link = "/";
   if (isAdmin) {
     link = "/dashboard";
   }
